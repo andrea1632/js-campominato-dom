@@ -58,15 +58,17 @@ function(){
 
             //funzione per colorare il box al click
             content.addEventListener("click",
-                function colorOnClick(){
+                /*function colorOnClick(){ 
                 const clickedNumber = parseInt(this.innerText);
                 if (arrayBomb.includes(clickedNumber)){
                     this.classList.add("bgRed")
-                    content.removeEventListener("click", colorOnClick())
+                    myFunc()
                 } else{
                     this.classList.add("bgLightBlue")
-                }
-            })
+                } 
+                
+            }*/
+            myFunc)
     }
 }
 )
@@ -74,5 +76,13 @@ function(){
 
 //FUNZIONI
 
-
+const myFunc =  function (){
+    const clickedNumber = parseInt(this.innerText);
+    if (arrayBomb.includes(clickedNumber)){
+        this.classList.add("bgRed")
+        content.removeEventListener("click", myFunc)
+    } else{
+        this.classList.add("bgLightBlue")
+    }
+}
   
