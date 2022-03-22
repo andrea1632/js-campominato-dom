@@ -13,11 +13,9 @@ function(){
 }
 )
 
-// ciclo per generare numeri random nell'array
 
 btn.addEventListener("click",
 function(){
-
     //condizione per determinare la difficoltà scelta dall'utente
     if (select.value == "facile"){
     numeroCelle = 100;
@@ -26,6 +24,16 @@ function(){
     } else {
     numeroCelle = 49;
     }
+            
+    
+    //array di numeri
+    for(y=0; y <= numeroCelle; y++){
+    arrayNum.push(y)   
+    }
+    arrayNum.sort(() => (Math.random() > .5) ? 1 : -1);
+
+
+
     for (let i = 1; i <= numeroCelle; i++){
         let content = document.createElement("div");
 
@@ -37,7 +45,7 @@ function(){
             content.classList.add("boxHard")
         }   
             grid.appendChild(content);
-            content.innerHTML = i;
+            content.innerHTML = arrayNum[i];
 
             //funzione per colorare il box al click
             content.addEventListener("click",
@@ -45,43 +53,12 @@ function(){
                 this.classList.add("bgLightBlue");
             })
     }
-    //condizioni per determinare la difficoltà scelta dall'utente
-     /* if(select.value == "facile"){
-        for(let i = 1; i <= 100; i++){
-            let content = document.createElement("div");
-            content.classList.add("boxEasy");
-            content.innerHTML = i;
-            grid.appendChild(content);
-            //funzione per colorare il box al click
-            content.addEventListener("click",
-                function colorOnClick(){
-                this.classList.add("bgLightBlue");
-            })
-        }
-    } else if(select.value == "medio"){
-        for(let i = 1; i <= 81; i++){
-            let content = document.createElement("div");
-            content.classList.add("boxMedium");
-            content.innerHTML = i;
-            grid.appendChild(content);
-            //funzione per colorare il box al click
-            content.addEventListener("click",
-                function colorOnClick(){
-                this.classList.add("bgLightBlue");
-            })
-        }
-    } else if(select.value == "difficile"){
-        for(let i = 1; i <= 100; i++){
-            let content = document.createElement("div");
-            content.classList.add("boxHard");
-            content.innerHTML = i;
-            grid.appendChild(content);
-            //funzione per colorare il box al click
-            content.addEventListener("click",
-                function colorOnClick(){
-                this.classList.add("bgLightBlue");
-            })
-        }
-    } */
+    console.log(arrayNum)
 }
 )
+
+
+//FUNZIONI
+
+//funzione per generare numeri random
+  
