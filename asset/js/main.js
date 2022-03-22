@@ -41,8 +41,8 @@ function(){
             arrayBomb.push(randomNumber);
         }
     }
-    console.log(arrayBomb)
-    
+        // calcolare il numero massimo dei tentativi
+        let massimiTentativi = numeroCelle - arrayBomb.length;
         //contatore quadrati non bombe
         let contatore = [];
         //punteggio utente
@@ -52,10 +52,13 @@ function(){
         let content = document.createElement("div");
         if(numeroCelle == 100){
             content.classList.add("boxEasy")
+            content.classList.add("boxGeneral")
         } else if(numeroCelle == 81){
             content.classList.add("boxMedium")
+            content.classList.add("boxGeneral")
         } else if(numeroCelle == 49){
             content.classList.add("boxHard")
+            content.classList.add("boxGeneral")
         }
 
 
@@ -64,35 +67,36 @@ function(){
 
             //funzione per colorare il box al click
             content.addEventListener("click",
-                /*function colorOnClick(){ 
+                function colorOnClick(){ 
                 const clickedNumber = parseInt(this.innerText);
                 if (arrayBomb.includes(clickedNumber)){
                     this.classList.add("bgRed")
-                    myFunc()
+                    endGame ("lose")
                 } else{
+                    score++
                     this.classList.add("bgLightBlue")
-                } 
-                
-            }*/
-            myFunc)
+                    contatore.push[clickedNumber]
+                    this.style.pointerEvents = "none";
+                }
+                   if(contatore.length >= massimiTentativi) {
+                    endGame("win");}                 
+            })
+            function endGame(vittoriSconfitta) {
+                if(vittoriSconfitta === "win") {
+                    alert("complimenti hai vinto!")
+                } else {     
+                    alert(`hai perso! il tuo punteggio è: ${score}`)   
+                    // Rendo tutti i quadrati non cliccabili
+                    const clickedHistory = document.getElementsByClassName("boxGeneral");
+                    for (let i = 0; i < clickedHistory.length; i++) {
+                        const clickedBox = clickedHistory[i];
+                        clickedBox.style.pointerEvents = "none";
+                    }
+                }
+            }
     }
 }
 )
 
 
-//FUNZIONI
-
-const myFunc =  function (){
-    const clickedNumber = parseInt(this.innerText);
-    if (arrayBomb.includes(clickedNumber)){
-        this.classList.add("bgRed")
-        content.removeEventListener("click", myFunc)
-        alert("mi dispiace hai perso!")
-
-    } else{
-        this.classList.add("bgLightBlue")
-        score++
-    }
-}
-console.log(score)
   
