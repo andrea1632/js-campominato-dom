@@ -17,6 +17,7 @@ function startGame(){
 //inizio gioco
 btn.addEventListener("click",
 function(){
+    grid.innerHTML = ""
     //condizione per determinare la difficoltà scelta dall'utente
     if (select.value == "facile"){
     numeroCelle = 100;
@@ -41,18 +42,23 @@ function(){
         }
     }
     console.log(arrayBomb)
-
+    
+        //contatore quadrati non bombe
+        let contatore = [];
+        //punteggio utente
+        let score = 0;
 
     for (let i = 1; i <= numeroCelle; i++){
         let content = document.createElement("div");
-
         if(numeroCelle == 100){
             content.classList.add("boxEasy")
         } else if(numeroCelle == 81){
             content.classList.add("boxMedium")
         } else if(numeroCelle == 49){
             content.classList.add("boxHard")
-        }   
+        }
+
+
             grid.appendChild(content);
             content.innerHTML = arrayNum[i];
 
@@ -81,8 +87,12 @@ const myFunc =  function (){
     if (arrayBomb.includes(clickedNumber)){
         this.classList.add("bgRed")
         content.removeEventListener("click", myFunc)
+        alert("mi dispiace hai perso!")
+
     } else{
         this.classList.add("bgLightBlue")
+        score++
     }
 }
+console.log(score)
   
