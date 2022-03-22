@@ -59,10 +59,14 @@ function(){
             //funzione per colorare il box al click
             content.addEventListener("click",
                 function colorOnClick(){
-                this.classList.add("bgLightBlue");
+                const clickedNumber = parseInt(this.innerText);
+                if (arrayBomb.includes(clickedNumber)){
+                    this.classList.add("bgRed")
+                } else{
+                    this.classList.add("bgLightBlue")
+                }
             })
     }
-    console.log(arrayNum)
 }
 )
 
