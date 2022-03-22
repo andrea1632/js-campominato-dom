@@ -9,7 +9,7 @@ let numeroCelle;
 
 //funzione al click per resettare
 reset.addEventListener("click",
-function(){
+function startGame(){
     grid.innerHTML = ""
 }
 )
@@ -62,6 +62,7 @@ function(){
                 const clickedNumber = parseInt(this.innerText);
                 if (arrayBomb.includes(clickedNumber)){
                     this.classList.add("bgRed")
+                    content.removeEventListener("click", colorOnClick())
                 } else{
                     this.classList.add("bgLightBlue")
                 }
