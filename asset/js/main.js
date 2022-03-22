@@ -4,6 +4,7 @@ let btn = document.getElementById("btn");
 let select = document.getElementById("select");
 let reset = document.getElementById("reset");
 let arrayNum = [];
+let arrayBomb = [];
 let numeroCelle;
 
 //funzione al click per resettare
@@ -13,7 +14,7 @@ function(){
 }
 )
 
-
+//inizio gioco
 btn.addEventListener("click",
 function(){
     //condizione per determinare la difficoltà scelta dall'utente
@@ -31,7 +32,15 @@ function(){
     arrayNum.push(y)   
     }
     arrayNum.sort(() => (Math.random() > .5) ? 1 : -1);
-
+    //array di bombe
+    while (arrayBomb.length < 16) {
+        const randomNumber = Math.floor(Math.random() *16);
+        // se il numero non è incluso viene pushato
+        if (!arrayBomb.includes(randomNumber)) {
+            arrayBomb.push(randomNumber);
+        }
+    }
+    console.log(arrayBomb)
 
 
     for (let i = 1; i <= numeroCelle; i++){
@@ -60,5 +69,5 @@ function(){
 
 //FUNZIONI
 
-//funzione per generare numeri random
+
   
